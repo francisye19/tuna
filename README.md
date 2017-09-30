@@ -1,18 +1,17 @@
-#qTunnel
+### Tuna - a tunnel program
 
-### qTunnel - a simpler and (possibily) faster tunnel program
+`Tuna` is a network tunneling software working as an encryption wrapper between clients and servers (remote/local).
 
-`qtunnel` is a network tunneling software working as an encryption wrapper between clients and servers (remote/local). It can work as a Stunnel/stud replacement.
+`Tuna` is forked from [qTunnel](https://github.com/getqujing/qtunnel).
 
-`qtunnel` has been serving over 10 millions connections on [Qu Jing](http://getqujing.com) each day for the past few months.
+##### Why Tuna
 
-##### Why Another Wrapper
-
-[Stunnel](https://www.stunnel.org/index.html)/[stud](https://github.com/bumptech/stud) is great in SSL/TLS based environments, but what we want is a lighter and faster solution that only does one job: transfer encrypted data between servers and clients. We don't need to deal with certification settings and we want the transfer is as fast as possible. So we made qTunnel. Basically, it's a Stunnel/stud without certification settings and SSL handshakes, and it's written in Go.
+- Support loading parameters from config file
+- UI
 
 ### Requirements
 
-qtunnel is writen in [golang 1.3.1](http://golang.org/dl/), after building it can run on almost every OS.
+[golang 1.9](http://golang.org/dl/)
 
 ### Build
 
@@ -66,16 +65,3 @@ This will establish a secure tunnel between your `redis-cli` and `redis` server,
 	redis-cli (host-b) <--> qtunnel (client,host-b) <--> qtunnel (host-a) <--> redis-server
 
 After this, you can communicate over a encrypted wrapper rather than clear text.
-
-### Credits
-
-Special thanks to [Paul](http://paulrosenzweig.com) for reviewing the code.
-
-### Contributing
-
-We encourage you to contribute to `qtunnel`! Please feel free to [submit a bug report](https://github.com/getqujing/qtunnel/issues), [fork the repo](https://github.com/getqujing/qtunnel/fork) or [create a pull request](https://github.com/getqujing/qtunnel/pulls).
-
-### License
-
-`qtunnel` is released under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
-
