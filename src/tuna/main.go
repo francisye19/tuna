@@ -27,7 +27,7 @@ func main() {
     var faddr, baddr, cryptoMethod, secret, logTo string
     var clientMode bool
     flag.StringVar(&logTo, "logto", "stdout", "stdout or syslog")
-    flag.StringVar(&faddr, "listen", ":9001", "host:port qtunnel listen on")
+    flag.StringVar(&faddr, "listen", ":9001", "host:port tuna listen on")
     flag.StringVar(&baddr, "backend", "127.0.0.1:6400", "host:port of the backend")
     flag.StringVar(&cryptoMethod, "crypto", "rc4", "encryption method")
     flag.StringVar(&secret, "secret", "secret", "password used to encrypt the data")
@@ -36,7 +36,7 @@ func main() {
 
     log.SetOutput(os.Stdout)
     if logTo == "syslog" {
-        w, err := syslog.New(syslog.LOG_INFO, "qtunnel")
+        w, err := syslog.New(syslog.LOG_INFO, "tuna")
         if err != nil {
             log.Fatal(err)
         }
@@ -44,7 +44,7 @@ func main() {
     }
 
     t := tunnel.NewTunnel(faddr, baddr, clientMode, cryptoMethod, secret, 4096)
-    log.Println("qtunnel started.")
+    log.Println("tuna started.")
     go t.Start()
     waitSignal()
 }
