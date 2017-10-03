@@ -1,0 +1,14 @@
+{
+  "ClientMode": true,
+  "ListenAddr": ":9527",
+  "Log": "stdout",
+  "Secret": "{{ secret }}",
+  "Crypto": "aes256cfb",
+  "Backends": [
+    {
+      "Name": "be-01",
+      "Addr": "{{ ip }}:443",
+      "Using": true
+    }
+  ]
+}
