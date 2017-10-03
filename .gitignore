@@ -1,3 +1,6 @@
+.idea/
 pkg/
 bin/
-.idea/
+deploy/
+assets/config.json
+*.pyc
