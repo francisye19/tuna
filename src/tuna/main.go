@@ -33,7 +33,7 @@ func (cfg *Config) loadConfig() {
     // Same folder of the exec file or the assets folder
     execFile, err := os.Executable()
     if err != nil {
-
+        log.Fatal(err)
     }
     execDir := filepath.Dir(execFile)
     paths := make([]string, 0)
@@ -56,12 +56,12 @@ func (cfg *Config) loadConfig() {
     for _, p := range paths {
         if _, err := os.Stat(p); err == nil {
             path = &p
-            log.Printf("Found %s from %v", configFileName, *path)
+            log.Printf("Using config file %v", *path)
             break
         }
     }
     if path == nil {
-        log.Fatalf("Can not find %v!", configFileName)
+        log.Fatalf("Can not find %v", configFileName)
     }
     file, err := os.Open(*path)
     if err != nil {
@@ -82,7 +82,7 @@ func waitSignal() {
             log.Printf("terminated by signal %v\n", sig)
             return
         } else {
-            log.Printf("received signal: %v, ignore\n", sig)
+            log.Printf("received signal %v, ignore\n", sig)
         }
     }
 }
@@ -101,10 +101,11 @@ func main() {
     for _, be := range config.Backends {
         if backend == nil && be.Using == true {
             backend = &be
+            log.Printf("Using backend %v", backend.Name)
         }
     }
     if backend == nil {
-        log.Println("Please specify the using backend server!")
+        log.Println("Please specify the using backend server")
         os.Exit(1)
     }
     baddr := backend.Addr
@@ -118,7 +119,7 @@ func main() {
     }
     // Start
     t := tunnel.NewTunnel(faddr, baddr, clientMode, cryptoMethod, secret, 4096)
-    log.Println("tuna started.")
+    log.Println("tuna started")
     go t.Start()
     waitSignal()
 }

@@ -33,11 +33,11 @@ $ make test
 $ tuna
 ```
 
-### Config
+### Configure
 
 The topology is:
 ```
-client <------> server
+app <------> tuna (client) <------> tuna (server) <------> service
 ```
 
 On `client`:
@@ -68,7 +68,6 @@ On `server`:
   "Crypto": "aes256cfb",
   "Backends": [
     {
-      "Name": "lo-01",
       "Addr": ":3128",
       "Using": true
     }
@@ -77,4 +76,8 @@ On `server`:
 ```
 
 Both servers and clients should use the same `crypto` and same `secret`.
+
+Please note the config file should be named as `config.json`, and placed in the same folder of the exec or in the assets folder. And comments are not supported as it is a json file.
+
+
 
