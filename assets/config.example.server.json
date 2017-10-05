@@ -1,7 +1,6 @@
 {
   "ClientMode": false,
   "ListenAddr": ":443",
-  "Log": "stdout",
   "Secret": "{{ secret }}",
   "Crypto": "aes256cfb",
   "Backends": [

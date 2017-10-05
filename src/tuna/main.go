@@ -5,7 +5,6 @@ import (
     "os/signal"
     "syscall"
     "log"
-    "log/syslog"
     "tunnel"
     "encoding/json"
     "path/filepath"
@@ -21,7 +20,6 @@ type Backend struct {
 type Config struct {
     ClientMode bool   // if running at client mode
     ListenAddr string // host:port tuna listen on
-    Log        string // stdout or syslog
     Secret     string // password used to encrypt the data
     Crypto     string // encryption method, rc4 or aes256cfb
     Backends   []Backend
@@ -94,14 +92,12 @@ func main() {
     config.loadConfig()
     clientMode := config.ClientMode
     faddr := config.ListenAddr
-    logTo := config.Log
     secret := config.Secret
     cryptoMethod := config.Crypto
     var backend *Backend
     for _, be := range config.Backends {
         if backend == nil && be.Using == true {
             backend = &be
-            log.Printf("Using backend %v", backend.Name)
         }
     }
     if backend == nil {
@@ -109,14 +105,6 @@ func main() {
         os.Exit(1)
     }
     baddr := backend.Addr
-    //
-    if logTo == "syslog" {
-        w, err := syslog.New(syslog.LOG_INFO, "tuna")
-        if err != nil {
-            log.Fatal(err)
-        }
-        log.SetOutput(w)
-    }
     // Start
     t := tunnel.NewTunnel(faddr, baddr, clientMode, cryptoMethod, secret, 4096)
     log.Println("tuna started")

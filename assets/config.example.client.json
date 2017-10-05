@@ -1,7 +1,6 @@
 {
   "ClientMode": true,
   "ListenAddr": ":9527",
-  "Log": "stdout",
   "Secret": "{{ secret }}",
   "Crypto": "aes256cfb",
   "Backends": [
