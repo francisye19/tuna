@@ -7,6 +7,7 @@
 ##### Why Tuna
 
 - Support loading parameters from config file
+- Web server
 - UI
 
 ### Requirements

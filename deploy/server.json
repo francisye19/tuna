@@ -1,0 +1,12 @@
+{
+  "ClientMode": false,
+  "ListenAddr": ":443",
+  "Secret": "{{ secret }}",
+  "Crypto": "aes256cfb",
+  "Backends": [
+    {
+      "Addr": ":3128",
+      "Using": true
+    }
+  ]
+}

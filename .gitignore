@@ -1,6 +1,7 @@
 .idea/
 pkg/
 bin/
-deploy/
+deploy/gen
+deploy/fabenv.py
 assets/config.json
 *.pyc
