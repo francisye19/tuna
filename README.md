@@ -78,7 +78,7 @@ On `server`:
 
 Both servers and clients should use the same `crypto` and same `secret`.
 
-Please note the config file should be named as `config.json`, and placed in the same folder of the exec or in the assets folder. And comments are not supported as it is a json file.
+Please note the config file should be named as `config.json`, and placed in the same folder of the exec folder. And comments are not supported as it is a json file.
 
 
 

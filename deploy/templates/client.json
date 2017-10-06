@@ -1,0 +1,15 @@
+{
+  "ClientMode": true,
+  "ListenAddr": ":9527",
+  "Secret": "{{ secret }}",
+  "Crypto": "aes256cfb",
+  "Backends": [
+    {%- for h in hosts %}
+    {
+      "Name": "{{ h[0] }}",
+      "Addr": "{{ h[1] }}",
+      "Using": {{ 'true' if h[2] else 'false' }}
+    }{{ ',' if not loop.last }}
+    {%- endfor %}
+  ]
+}

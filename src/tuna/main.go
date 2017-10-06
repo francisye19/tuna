@@ -28,7 +28,7 @@ type Config struct {
 const configFileName string = "config.json"
 
 func (cfg *Config) loadConfig() {
-    // Same folder of the exec file or the assets folder
+    // Same folder of the exec file
     execFile, err := os.Executable()
     if err != nil {
         log.Fatal(err)
@@ -36,7 +36,6 @@ func (cfg *Config) loadConfig() {
     execDir := filepath.Dir(execFile)
     paths := make([]string, 0)
     paths = append(paths, filepath.Join(execDir, configFileName))
-    paths = append(paths, filepath.Join(execDir, "..", "assets", configFileName))
     // Same folder of the source file
     _, srcFile, _, ok := runtime.Caller(0)
     if ok {

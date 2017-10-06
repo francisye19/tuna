@@ -2,6 +2,5 @@
 pkg/
 bin/
 deploy/gen
-deploy/fabenv.py
-assets/config.json
+deploy/instance
 *.pyc
