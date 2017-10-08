@@ -46,13 +46,12 @@ On `client`:
 {
   "ClientMode": true,
   "ListenAddr": ":9527",
-  "Log": "stdout",
-  "Secret": "{{ secret }}",
+  "Secret": "This is a secret",
   "Crypto": "aes256cfb",
   "Backends": [
     {
-      "Name": "be-01",
-      "Addr": "{{ ip }}:443",
+      "Name": "be1",
+      "Addr": "192.168.1.100:443",
       "Using": true
     }
   ]
@@ -64,8 +63,7 @@ On `server`:
 {
   "ClientMode": false,
   "ListenAddr": ":443",
-  "Log": "stdout",
-  "Secret": "{{ secret }}",
+  "Secret": "This is a secret",
   "Crypto": "aes256cfb",
   "Backends": [
     {
