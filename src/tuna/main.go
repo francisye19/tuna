@@ -53,7 +53,7 @@ func (cfg *Config) loadConfig() {
     for _, p := range paths {
         if _, err := os.Stat(p); err == nil {
             path = &p
-            log.Printf("Using config file %v", *path)
+            log.Printf("Found config file %v", *path)
             break
         }
     }
@@ -100,9 +100,9 @@ func main() {
         }
     }
     if backend == nil {
-        log.Println("Please specify the using backend server")
-        os.Exit(1)
+        log.Fatal("Please specify the using backend server")
     }
+    log.Printf("You are using backend server %v", backend.Name)
     baddr := backend.Addr
     // Start
     t := tunnel.NewTunnel(faddr, baddr, clientMode, cryptoMethod, secret, 4096)

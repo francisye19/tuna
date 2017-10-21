@@ -9,12 +9,12 @@ import (
 )
 
 type Tunnel struct {
-    faddr, baddr *net.TCPAddr
-    clientMode bool
-    cryptoMethod string
-    secret []byte
+    faddr, baddr  *net.TCPAddr
+    clientMode    bool
+    cryptoMethod  string
+    secret        []byte
     sessionsCount int32
-    pool *recycler
+    pool          *recycler
 }
 
 func NewTunnel(faddr, baddr string, clientMode bool, cryptoMethod, secret string, size uint32) *Tunnel {
@@ -27,13 +27,13 @@ func NewTunnel(faddr, baddr string, clientMode bool, cryptoMethod, secret string
         log.Fatalln("resolve backend error:", err)
     }
     return &Tunnel{
-        faddr: a1,
-        baddr: a2,
-        clientMode: clientMode,
-        cryptoMethod: cryptoMethod,
-        secret: []byte(secret),
+        faddr:         a1,
+        baddr:         a2,
+        clientMode:    clientMode,
+        cryptoMethod:  cryptoMethod,
+        secret:        []byte(secret),
         sessionsCount: 0,
-        pool: NewRecycler(size),
+        pool:          NewRecycler(size),
     }
 }
 

@@ -15,8 +15,8 @@ type Cipher struct {
 
 type chiperCreator func(key []byte) (*Cipher, error)
 
-var cipherMap = map[string]chiperCreator {
-    "rc4": newRC4Cipher,
+var cipherMap = map[string]chiperCreator{
+    "rc4":       newRC4Cipher,
     "aes256cfb": newAES256CFBCipher,
 }
 

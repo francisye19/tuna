@@ -6,16 +6,16 @@ import (
 )
 
 type Conn struct {
-    conn net.Conn
+    conn   net.Conn
     cipher *Cipher
-    pool *recycler
+    pool   *recycler
 }
 
 func NewConn(conn net.Conn, cipher *Cipher, pool *recycler) *Conn {
     return &Conn{
-        conn: conn,
+        conn:   conn,
         cipher: cipher,
-        pool: pool,
+        pool:   pool,
     }
 }
 
