@@ -93,13 +93,13 @@ func main() {
     faddr := config.ListenAddr
     secret := config.Secret
     cryptoMethod := config.Crypto
-    var backend *Backend
+    var backend Backend
     for _, be := range config.Backends {
-        if backend == nil && be.Using == true {
-            backend = &be
+        if be.Using == true {
+            backend = be
         }
     }
-    if backend == nil {
+    if backend == (Backend{}) {
         log.Fatal("Please specify the using backend server")
     }
     log.Printf("You are using backend server %v", backend.Name)
