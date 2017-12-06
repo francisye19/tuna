@@ -102,7 +102,12 @@ func main() {
     if backend == (Backend{}) {
         log.Fatal("Please specify the using backend server")
     }
-    log.Printf("You are using backend server %v", backend.Name)
+    if clientMode {
+        log.Printf("You are using backend server %v", backend.Name)
+    } else {
+        log.Println("You are running server mode")
+    }
+
     baddr := backend.Addr
     // Start
     t := tunnel.NewTunnel(faddr, baddr, clientMode, cryptoMethod, secret, 4096)

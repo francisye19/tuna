@@ -25,7 +25,7 @@ env.password = PASSWORD
 env.hosts = HOSTS
 env.roledefs = {
     'local': ['localhost'],
-    'remote': [h[1] for h in HOSTS]
+    'remote': [h[1].split(':')[0] for h in HOSTS]
 }
 # Project folder
 project_folder = '/usr/local/tuna'
